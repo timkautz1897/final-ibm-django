@@ -141,16 +141,10 @@ def submit_question(request, course_id):
 def show_exam_result(request, course_id, submission_id):
     template_name = 'onlinecourse/exam_result_bootstrap.html'
 
-
-
-    current_user = request.user
-    enrollment = Enrollment.objects.get(user=current_user, course=course_id)
     submission = Submission.objects.get(id=submission_id)
     question_ids = {}
     for choice in submission.choices.all():
         question_ids.setdefault(choice.question_id.id, []).append(choice.id)
-
-    print(question_ids)
 
     total_answers = 0
     total_correct = 0
