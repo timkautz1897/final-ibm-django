@@ -108,7 +108,7 @@ class Question(models.Model):
     def get_score(self, selected):
         answers = self.choice_set.filter(is_correct=True).count()
         selected_answers = self.choice_set.filter(is_correct=True, id__in=selected).count()
-        return selected_answers == answers
+        return (selected_answers, answers)
 
 class Choice(models.Model):
 
@@ -122,4 +122,4 @@ class Choice(models.Model):
 # One choice could belong to multiple submissions
 class Submission(models.Model):
    enrollment = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
-   chocies = models.ManyToManyField(Choice)
+   choices = models.ManyToManyField(Choice)

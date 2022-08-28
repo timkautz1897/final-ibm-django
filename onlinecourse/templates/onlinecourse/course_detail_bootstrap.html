@@ -47,7 +47,7 @@
                     <div class="card mt-1">
                         <div class="card-header" data-toggle="collapse" data-target="#questions-{{lesson.id}}"><h5>Lesson {{lesson.order|add:1}}: {{lesson.title}}</h5></div>
                         <div class="card-body collapse" id="questions-{{lesson.id}}">
-                            <form method="post">
+                            <form method="post" action="{% url 'onlinecourse:submit_question' course_id=course.id %}">
                             {% csrf_token %}
                             {% for question in lesson.question_set.all %}
 
