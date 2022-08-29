@@ -1,11 +1,9 @@
   applications:
-  - name: onlinecourse
-    routes:
-      - route: host.domain
+  - name: onlinecourse-4903-tika
+    random-route: true
     memory: 128M
     buildpack: python_buildpack
-  - name: onlinecourse-nginx
-    routes:
-      - route: host.domain/static
+  - name: onlinecourse-4903-tika-nginx
+    random-route: true
     memory: 128M
     buildpack: staticfile_buildpack
